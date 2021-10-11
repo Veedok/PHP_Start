@@ -14,8 +14,8 @@
    <body>
         <h1>$h1</h1>
         <h2>Сейчас $year год</h2>
-        <a href='Task1.jpg' target='_blank'>Задание 1</a>
-        <a href='task2.php' target='_blank'>Задание 2</a>
+        <a href='Task1.jpg' target='_blank'>Урок 1</a>
+        <a href='work2/work2.php' target='_blank'>Урок 2</a>
         <a href='task3.php' target='_blank'>Задание 3</a>
         <a href='task5.php' target='_blank'>Задание 5</a>
    </body>
