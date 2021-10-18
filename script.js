@@ -1,3 +1,4 @@
+//Логика работы модального окна
 let b = document.getElementById("modal");
         document.addEventListener("click", click);
         function click(){
@@ -17,3 +18,15 @@ let b = document.getElementById("modal");
                 }
             }
         };
+//Логика работы с json файлом и построение DOM благодаря полученному файлу
+        (async () => {
+            const response = await fetch('data.json')
+            const result = await response.json()
+            console.log(result);
+            let content = document.querySelector(".content");
+            result.forEach(element => {
+                let myImg = `<div class="item"><img class="product_img" src=img/${element} alt="img"></div>`
+                content.insertAdjacentHTML('afterbegin', myImg);
+                
+            });
+        })()
