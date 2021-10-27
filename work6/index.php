@@ -27,7 +27,7 @@ function updatePosts () {
     $inquiry = mysqli_query($link, 'SELECT * FROM reviews ORDER BY dater DESC');
     while ($row = mysqli_fetch_assoc($inquiry)){
         $posts .= "<div class='singlePost'>
-                    <img src=" . $row['imgPath'] . "alt='img_post'>
+                    <img class='imgPost' src=" . $row['imgPath'] . " alt='img_post'>
                     <p class='text'>" . $row['textr'] . "</p>
                     <p class='date'>" . $row['dater'] . "</p>        
                 </div>"; 
