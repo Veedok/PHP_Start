@@ -1,4 +1,5 @@
 <?php
+require_once 'adddb.php';
 $num1 = $_POST["num1"];
 $num2 = $_POST["num2"];
 $operation = $_POST["Math"];
@@ -21,6 +22,23 @@ if($num2 == 0 && $operation == '/'){
             break;
     }
 }
+function updatePosts () {  
+    $link = mysqli_connect('127.0.0.1:3306', 'root', '123', 'php_start');  
+    $inquiry = mysqli_query($link, 'SELECT * FROM reviews ORDER BY dater DESC');
+    while ($row = mysqli_fetch_assoc($inquiry)){
+        $posts .= "<div class='singlePost'>
+                    <img src=" . $row['imgPath'] . "alt='img_post'>
+                    <p class='text'>" . $row['textr'] . "</p>
+                    <p class='date'>" . $row['dater'] . "</p>        
+                </div>"; 
+              
+}
+
+$postsWrap = '<div class="wrapPost">' . $posts . '</div>';
+mysqli_close($link);
+return $postsWrap;
+} 
+$newpost = updatePosts();
 ?>
 
 
@@ -30,6 +48,7 @@ if($num2 == 0 && $operation == '/'){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -49,5 +68,15 @@ if($num2 == 0 && $operation == '/'){
         <input type="submit"> -->
     </form>
     <p><?php echo($result);?></p>
+    <div>
+        <form action="adddb.php" method="post">
+            <input type="text" name="loremtext">
+            <input type="submit" value="bbb">
+           
+        </form>
+        <?php echo($newpost); ?>
+        
+    </div>
+    
 </body>
 </html>
