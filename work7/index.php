@@ -12,6 +12,12 @@
         <input type="password" name="pass">
         <input type="submit" value="login">
     </form>
+    <form method="POST" action="register.php">
+        <input type="text" name="login">
+        <input type="password" name="pass">
+        <input type="password" name="pass1">
+        <input type="submit" value="login">
+    </form>
 </body>
 </html>
 

@@ -15,7 +15,7 @@ require_once 'db.php';
 $result = mysqli_query($link, "SELECT * FROM login");
 while ($users = mysqli_fetch_assoc($result)) {
     if($users['login'] === $_POST['login']) {
-        if ($users['passwordhash'] ===  $_POST['pass']) {
+        if (password_verify($_POST['pass'], $users['passwordhash'])) {
             $result1 = mysqli_query($link, "SELECT * FROM images ORDER BY countClick DESC");
             while ($row = mysqli_fetch_assoc($result1)){
                  echo ("<a href='/singleimg.php?img_id=" . $row["id"] . "'>
