@@ -12,7 +12,8 @@ if ($_POST['pass'] === $_POST['pass1']) {
     $login = $_POST['login'];
     $adddb = "INSERT ignore INTO login (login, passwordhash) VALUES ('" . $login . "', '" . $passhesh . "')";
     mysqli_query($link, $adddb);
-    echo($adddb);
+    echo('<h2>Вы успешно зарегистрированы</h2>
+    <a href="index.php">На страницу входа </a>');
 } else {
     echo('Пароли не совпадают');
 }   

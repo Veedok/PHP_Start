@@ -1,38 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">    
-    <title>Document</title>
-</head>
-<body>    
-    <div class="off" id="modal"></div>
-    <div class="wrap">
-        <div class="content">  
-
 <?php
+
 require_once 'db.php';
-$result = mysqli_query($link, "SELECT * FROM login");
-while ($users = mysqli_fetch_assoc($result)) {
-    if($users['login'] === $_POST['login']) {
-        if (password_verify($_POST['pass'], $users['passwordhash'])) {
-            $result1 = mysqli_query($link, "SELECT * FROM images ORDER BY countClick DESC");
-            while ($row = mysqli_fetch_assoc($result1)){
-                 echo ("<a href='/singleimg.php?img_id=" . $row["id"] . "'>
-                            <div class='item'>
-                                <img class='product_img' src=" . $row["imgPath"] . " alt='img'>
-                            </div>
-                        </a>");
-                        
-            } 
-            die;  
-        }   
-    }    
+function addMarkup ($link) {
+    $result1 = mysqli_query($link, "SELECT * FROM images ORDER BY countClick DESC");
+    $product = '';
+    while ($row = mysqli_fetch_assoc($result1)){
+         $product .= "<a href='/singleimg.php?img_id=" . $row["id"] . "'>
+                    <div class='item'>
+                        <img class='product_img' src=" . $row["imgPath"] . " alt='img'>
+                    </div>
+                </a>";
+                
+    }
+    setcookie('myCookie', 'All ok');
+    $wrap = '<link rel="stylesheet" href="style.css"><div class="wrap"><div class="content">' . $product . '</div></div>';
+    echo($wrap);
+    mysqli_close($link); 
 }
-mysqli_close($link);
-echo('error');
+function verify($link){
+    $result = mysqli_query($link, "SELECT * FROM login");
+    while ($users = mysqli_fetch_assoc($result)) {
+        if($users['login'] === $_POST['login']) {
+            if (password_verify($_POST['pass'], $users['passwordhash'])) {
+                addMarkup($link);                
+                die;  
+            }   
+        }    
+    }    
+    setcookie('badСookie','321');
+    echo('error');
+}
+if (!isset($_COOKIE['myCookie']))   
+{   
+    echo "Oh my God, переменная is gone ))";  
+}
+
+ verify($link);
+ 
+
 ?>
-       </div>
-    </div>    
-</body>
-</html>
+    
