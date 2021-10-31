@@ -8,7 +8,8 @@ while ($users = mysqli_fetch_assoc($result)) {
         }   
     }
 if ($_POST['pass'] === $_POST['pass1']) {
-    $passhesh = password_hash($_POST['pass'], null);
+    $passhesh = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+    echo ($passhesh);
     $login = $_POST['login'];
     $adddb = "INSERT ignore INTO login (login, passwordhash) VALUES ('" . $login . "', '" . $passhesh . "')";
     mysqli_query($link, $adddb);
