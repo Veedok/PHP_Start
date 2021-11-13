@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+.wrap {
+    width: 1300px;
+    margin: 0 auto;
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+.item {
+    flex-basis: 20%;
+    margin: 20px 10px;
+    min-height: 100px;
+    background-color: black;
+}
+.product_img {
+    max-width: 300px;
+    padding: 10px;
+}
+#modal {
+    z-index: 99;
+    background: rgb(199, 18, 18);
+   padding: 50px;
+   position: absolute;
+   height: 100vh;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%,-50%);
+}
+.on {
+    display: block;
+
+}
+.off {
+    display: none;
+}
+.img_big {
+    width: 1000px;
+    height: 500px;
+}

@@ -1,0 +1,1 @@
+var id1 = '<?php print_r($arr); ?>';
