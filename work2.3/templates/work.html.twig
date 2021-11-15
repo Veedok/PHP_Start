@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+{% for item in rows %}    
+    <a href="/index2.php?img_id={{item.id}}">
+                <div class='item'>
+                    <img class='product_img' src={{item.imgPath}} alt='img'>
+                    <p>{{item.imgName}}</p>
+                </div>
+            </a>
+{% endfor %}
+</div>
+</body>
+</html>
