@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Делаем блок куда будем вставлять элементы и кнопку по какой будем их прогружать -->
+    <div id="block"></div>
+    <button onclick="goit()">Загрузить еще</button>
+  
+    <script>
+        // Создаем переменную которую будем передовать в GET что бы определить откуда будем стартовать,
+        //  пишем ее не в теле функции что бы она не сбрасывалась каждый раз и т.к. надо начать с id 1 то ее назначаем -1 что бы после работы функции она стала = 1
+        let params = -1;
+        function goit() {
+        // т.к. выводим по 2 товара за 1 раз к переменной для get запроса плюсуем 2
+            params = params + 2;
+        // Колбек функция для добавления разметки
+            function markup(rast) {
+                let myDiv = document.querySelector('#block');
+                rast.forEach(element => {                    
+                    let my = "<div class='item'><img class='product_img' src="+ element['imgPath'] + " alt='img'><p>"+ element['imgName'] +"</p></div>";
+                    myDiv.insertAdjacentHTML("beforeend", my);
+             });
+        }
+        // Тут запрос к серверу
+        let backend =  fetch('http://php.com/index2.php?myid='+ params)
+            .then(response => response.json())
+            .then(commits => markup(commits));
+            
+        }
+        
+    </script>
+</body>
+</html>
