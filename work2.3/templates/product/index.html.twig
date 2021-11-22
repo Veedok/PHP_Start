@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .pro  {    width: 100px; } 
+    .item {width: 300px;}
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello !</h1>
+
+    {% for item in prod %}    
+    
+                <div class='item'>
+                    <h4>{{item.name}}</h4>
+                    <img  class="pro" src="{{item.img}}" alt="{{item.id}}">
+                    <p>{{item.disc}}</p>
+                    <p>{{item.price}}</p>
+                </div>
+            
+{% endfor %}
+</div>
+{% endblock %}
