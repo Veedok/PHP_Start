@@ -6,14 +6,21 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .name input {width: 400px;}
+    .name div {display: flex;     flex-direction: column;}
+    
 </style>
-
+<link rel="stylesheet" href="../style/style.css">
 <div class="example-wrapper">
     {{ form_start(form) }}
     <div class="my-custom-class-for-errors">
         {{ form_errors(form) }}
     </div>
-<input type="submit" value="1">
+    <div class = "name">{{ form_row(form.name) }}</div>
+    <div class = "name">{{ form_row(form.disc) }}</div>
+    <div class = "name">{{ form_row(form.price) }}</div>
+    <div class = "name">{{ form_row(form.img) }}</div>
+<input type="submit" value="Записать в БД">
     
 {{ form_end(form) }}
 <a href="/product">Каталог</a>
