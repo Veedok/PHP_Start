@@ -1,19 +1,20 @@
 <?php
 // Задание №1
-function dirfunc($name) {
+function dirfunc($name, $b) {
     $mydir = new DirectoryIterator($name);
     foreach($mydir as $item) {
-        if ($item != '.' && $item != '..' && $item != '.git') {
+        if ($item != '.' && $item != '..' && $item != '.git' && $item != 'OpenServer') {
             if (($item->getType()) == 'dir') {
-                echo ('    ' . $item . PHP_EOL);                
-                dirfunc($item->getPathname());
+                echo ($b . $item . PHP_EOL); 
+                $ss = $b . "----";               
+                dirfunc($item->getPathname(), $ss);
             } else {
-                echo $item . PHP_EOL;
+                echo ($b . $item . PHP_EOL);
             }
         }
     }
 }
-dirfunc('PHP_start');
+dirfunc('PHP_start', '');
 
 // поиск элемента массива с известным индексом,  O(1)
 // дублирование массива через foreach, O(n)
